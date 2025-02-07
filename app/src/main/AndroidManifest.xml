@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:installLocation="internalOnly">
 
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <!-- <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> -->
+    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
+    <!-- <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" tools:ignore="ProtectedPermissions" /> -->
+    <!-- <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/> -->
 
     <application
         android:allowBackup="false"
@@ -48,12 +48,13 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-	    <meta-data android:name="com.samsung.android.multidisplay.keep_process_alive" android:value="false"/>
-	    <meta-data android:name="android.allow_multiple_resumed_activities" android:value="true" />
+
+	    <!-- <meta-data android:name="com.samsung.android.multidisplay.keep_process_alive" android:value="false"/> -->
+	    <!-- <meta-data android:name="android.allow_multiple_resumed_activities" android:value="true" /> -->
 
         <service android:name=".utils.KeyInterceptor"
             android:exported="true"
-            android:label="Termux:X11 KeyInterceptor"
+            android:label="Open KeyInterceptor"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
@@ -64,13 +65,15 @@
                 android:resource="@xml/accessibility_service_config" />
         </service>
 
-        <receiver android:name=".LoriePreferences$Receiver" android:exported="true" tools:ignore="ExportedReceiver" android:enabled="true">
-            <intent-filter>
-                <action android:name="com.termux.x11.CHANGE_PREFERENCE" />
-            </intent-filter>
-        </receiver>
-    </application>
+        <!-- <receiver android:name=".LoriePreferences$Receiver" android:exported="true" tools:ignore="ExportedReceiver" android:enabled="true"> -->
+        <!--     <intent-filter> -->
+        <!--         <action android:name="com.termux.x11.CHANGE_PREFERENCE" /> -->
+        <!--     </intent-filter> -->
+        <!-- </receiver> -->
+
+</application>
+
     <queries>
-        <package android:name="com.termux" />
+        <package android:name="open.keys" />
     </queries>
 </manifest>
