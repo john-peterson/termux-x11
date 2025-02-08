@@ -30,9 +30,9 @@ public class KeyInterceptor extends AccessibilityService {
 
     public static void launch(@NonNull Context ctx) {
         try {
-            Settings.Secure.putString(ctx.getContentResolver(), Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES, "com.termux.x11/.utils.KeyInterceptor");
-            Settings.Secure.putString(ctx.getContentResolver(), Settings.Secure.ACCESSIBILITY_ENABLED, "1");
-            launchedAutomatically = true;
+            // Settings.Secure.putString(ctx.getContentResolver(), Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES, "com.termux.x11/.utils.KeyInterceptor");
+            // Settings.Secure.putString(ctx.getContentResolver(), Settings.Secure.ACCESSIBILITY_ENABLED, "1");
+            // launchedAutomatically = true;
         } catch (SecurityException e) {
             new AlertDialog.Builder(ctx)
                     .setTitle("Permission denied")
@@ -43,7 +43,7 @@ public class KeyInterceptor extends AccessibilityService {
                     .create()
                     .show();
 
-            MainActivity.prefs.enableAccessibilityServiceAutomatically.put(false);
+            // MainActivity.prefs.enableAccessibilityServiceAutomatically.put(false);
         }
     }
 
@@ -74,7 +74,8 @@ public class KeyInterceptor extends AccessibilityService {
     }
 
     public static void recheck() {
-        MainActivity a = MainActivity.getInstance();
+        // MainActivity a = MainActivity.getInstance();
+        MainActivity a = null;
         boolean shouldBeEnabled = (a != null && self != null) && (a.hasWindowFocus() || !self.pressedKeys.isEmpty());
         if (self != null && shouldBeEnabled != self.enabled) {
             if (shouldBeEnabled) {
@@ -97,7 +98,8 @@ public class KeyInterceptor extends AccessibilityService {
         if (instance == null)
             return false;
 
-        boolean intercept = instance.shouldInterceptKeys();
+        // boolean intercept = instance.shouldInterceptKeys();
+        boolean intercept = true;
 
         if (intercept || (event.getAction() == KeyEvent.ACTION_UP && pressedKeys.contains(event.getKeyCode())))
             ret = instance.handleKey(event);
